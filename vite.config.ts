@@ -7,9 +7,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         entryFileNames(chunkInfo) {
-          if (chunkInfo.name === "sw") {
+          if (chunkInfo.name === "service-worker") {
             // 需要把 sw 放在根目录，否则无法生效
-            return "[name].js";
+            return "sw.js";
           }
           return "[name]-[hash].js";
         },
