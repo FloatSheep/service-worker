@@ -10,6 +10,10 @@ const state = {
   instance: null as CacheManager | null,
 };
 
+/**
+ *
+ * @returns CacheManager 实例
+ */
 export const init = async () => {
   if (!state.instance) {
     try {
@@ -25,6 +29,11 @@ export const init = async () => {
   }
 };
 
+/**
+ * 
+ * @param key 目标 key
+ * @returns Boolean
+ */
 export const hasItem = async (key: string): Promise<boolean> => {
   if (state.instance) {
     try {

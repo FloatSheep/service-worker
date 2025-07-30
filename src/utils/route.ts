@@ -61,4 +61,7 @@ app.notFound(async (c) => {
   return c.body(await (await handleRequest("/404.html")).arrayBuffer(), 404);
 });
 
+/**
+ * @param {FetchEvent} FetchEvent Fetch 事件
+ */
 export const fetchHandle = handle(app);
