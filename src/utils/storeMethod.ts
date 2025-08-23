@@ -30,7 +30,7 @@ export const init = async () => {
 };
 
 /**
- * 
+ *
  * @param key 目标 key
  * @returns Boolean
  */

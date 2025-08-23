@@ -10,7 +10,7 @@ const state = { isChecked: false };
 const checkUpdate = async () => {
   debug((console) => {
     console.log("检查更新");
-  })
+  });
 
   const e = await init();
   if (!state.isChecked) {

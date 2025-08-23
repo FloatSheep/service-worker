@@ -3,6 +3,7 @@ import { handle } from "hono/service-worker";
 import { init } from "./storeMethod";
 import type { CacheManager } from "@floatsheep/cachemanager";
 import { config } from "../../sw.config";
+import { debug } from "./debug";
 
 const app = new Hono();
 
@@ -27,8 +28,20 @@ const convertPathToHtmlJson = (relPath: string): string => {
 
 // 处理请求的核心逻辑
 const handleRequest = async (relPath: string): Promise<Response> => {
+  debug((console) => {
+    console.log(`路径匹配前 ${relPath}`);
+  });
+
   // 如果路径以 '/' 结尾，则默认指向 index.html
   if (relPath.endsWith("/")) {
+    relPath += "index.html";
+  }
+
+  if (relPath.includes("#")) {
+    relPath = relPath.replace(`#${relPath.split("#")[1]}`, "");
+    debug((console) => {
+      console.log(`处理 hash 后 ${relPath}`);
+    });
     relPath += "index.html";
   }
 
